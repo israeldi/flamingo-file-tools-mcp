@@ -153,6 +153,57 @@ def selected_file(root, selected, maximum):
     if fd is not None:
       os.close(fd)
 
+def key_file(selected):
+  """Read only the explicit private credential, with no path/secret logging."""
+  fd = None
+  try:
+    if not isinstance(selected, str) or not os.path.isabs(selected) or control(selected) or (len(selected) > 4096) or ('..' in re.split('[\\\\/]', selected)):
+      raise ValueError()
+    path = os.path.normpath(selected)
+    uid = os.geteuid()
+    parents, cursor = ([], os.path.dirname(path))
+    while True:
+      info = os.lstat(cursor)
+      sticky_system = info.st_uid == 0 and info.st_mode & stat.S_ISVTX
+      if not stat.S_ISDIR(info.st_mode) or info.st_uid not in (0, uid) or (info.st_mode & 18 and (not sticky_system)):
+        raise ValueError()
+      parents.append((cursor, info))
+      if cursor == os.path.dirname(path) and (info.st_uid != uid or info.st_mode & 63):
+        raise ValueError()
+      parent = os.path.dirname(cursor)
+      if parent == cursor:
+        break
+      cursor = parent
+    named = os.lstat(path)
+    if not stat.S_ISREG(named.st_mode) or named.st_uid != uid or stat.S_IMODE(named.st_mode) not in (256, 384) or (not 1 <= named.st_size <= 513):
+      raise ValueError()
+    fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+    before = os.fstat(fd)
+    if not _same(named, before) or not stat.S_ISREG(before.st_mode) or before.st_uid != uid or (stat.S_IMODE(before.st_mode) not in (256, 384)) or (not 1 <= before.st_size <= 513):
+      raise ValueError()
+    data = b''
+    while len(data) <= before.st_size:
+      chunk = os.read(fd, before.st_size + 1 - len(data))
+      if not chunk:
+        break
+      data += chunk
+    after, named_after = (os.fstat(fd), os.lstat(path))
+    if len(data) != before.st_size or after.st_size != before.st_size or after.st_mtime_ns != before.st_mtime_ns or (after.st_ctime_ns != before.st_ctime_ns) or (after.st_mode != before.st_mode) or (after.st_uid != uid) or (not _same(before, after)) or (not _same(after, named_after)) or (not stat.S_ISREG(named_after.st_mode)) or (named_after.st_mode != after.st_mode) or (named_after.st_uid != uid) or (os.path.realpath(path) != path):
+      raise ValueError()
+    for directory, original in parents:
+      current = os.lstat(directory)
+      if not _same(original, current) or original.st_mode != current.st_mode or original.st_uid != current.st_uid or (original.st_gid != current.st_gid):
+        raise ValueError()
+    key = (data[:-1] if data.endswith(b'\n') else data).decode('ascii')
+    if not re.fullmatch('[\\x21-\\x7e]{16,512}', key):
+      raise ValueError()
+    return key
+  except (OSError, ValueError, UnicodeError):
+    fail('key_file_invalid', 'Use an owned private stable regular key file and private parent; one valid key only.')
+  finally:
+    if fd is not None:
+      os.close(fd)
+
 def _transport(host, route, headers, body, maximum, timeout):
   done, cancelled, active = (queue.Queue(), threading.Event(), [])
 
@@ -302,6 +353,7 @@ def parser():
   value = Parser(description=DESCRIPTION, allow_abbrev=False)
   value.add_argument('--workspace', required=True)
   value.add_argument('--file', required=True)
+  value.add_argument('--key-file', help='Explicit private key file; overrides RAPIDAPI_KEY without fallback.')
   value.add_argument('--consent-upload', action='store_true', help='Authorize upload and allowance use.')
   options(value)
   return value
@@ -312,10 +364,10 @@ def run(argv=None):
     fail('consent_required', 'Upload/allowance consent required.')
   if os.name != 'posix':
     fail('platform_unsupported', 'POSIX host required. No request was made.')
-  key = os.environ.get('RAPIDAPI_KEY', '')
+  key = key_file(args.key_file) if args.key_file is not None else os.environ.get('RAPIDAPI_KEY', '')
   if not re.fullmatch('[\\x21-\\x7e]{16,512}', key):
     fail('key_missing', 'Set RAPIDAPI_KEY privately, never in chat.')
-  if key in args.file or key in args.workspace or key in (getattr(args, 'text', None) or ''):
+  if key in args.file or key in args.workspace or key in (args.key_file or '') or (key in (getattr(args, 'text', None) or '')):
     fail('invalid_arguments', 'Credential in path/label. No request made.')
   validate(args)
   root = workspace(args.workspace)
@@ -323,6 +375,8 @@ def run(argv=None):
     fail('workspace_invalid', 'Credential in workspace path.')
   descriptor = descriptors(args)
   source = selected_file(root, args.file, descriptor[2])
+  if key.encode('ascii') in source:
+    fail('credential_input_refused', 'Selected input contains the credential. No request was made.')
   summary, values = perform(args, source, descriptor, key)
   artifacts = write_artifacts(root, values)
   return {'ok': True, 'tool': tool(args), 'artifacts': artifacts, 'summary': summary, 'artifact_content_is_untrusted': True, 'note': 'Review artifacts; no retries.'}
