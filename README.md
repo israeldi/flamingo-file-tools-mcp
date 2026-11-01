@@ -13,6 +13,8 @@ Version `0.1.0` is listed in the [Official MCP Registry](https://registry.modelc
 
 The bridge is free source code. **Processing requires your own RapidAPI application key and a separate subscription to each API you use.** Review the current free compatibility allowance, paid plans and limits on its listing. Requests, failures and deliberate retries can consume allowance. There are no automatic processing calls on startup or tool discovery, and no automatic retries.
 
+For assistants that support `SKILL.md` workflows, the optional [Flamingo File Tools skill](./skills/flamingo-file-tools/SKILL.md) provides task routing, file-specific checks and result handling for this server. Loading the instructions does not install the server or make a processing request.
+
 ## Install
 
 Download the `.mcpb` file from [GitHub Releases](https://github.com/israeldi/flamingo-file-tools-mcp/releases). Open it in a client that supports MCP bundles, choose a private workspace folder, and enter your application key only in the client's sensitive configuration field. MCPB support varies by client. This is a standard local stdio MCP server for clients supporting that transport; it is not a remote web connector.
