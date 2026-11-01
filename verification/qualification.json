@@ -1,0 +1,49 @@
+{
+  "qualified_at_utc": "2026-11-01T01:23:41.541258+00:00",
+  "version": "0.1.0",
+  "scope": "Prepublication source, fictional-fixture and actual unpacked-bundle qualification; not customer or live marketplace evidence",
+  "local_node": "24.22.1",
+  "local_tests": {
+    "passed": 49,
+    "failed": 0,
+    "coverage": "All five processing operations plus local capabilities, strict arguments/consent, exact request contracts, bounded integrity checks, safe errors, no retry/redirect, permissions/containment and real stdio/symlink handshakes"
+  },
+  "production_dependency_audit": {
+    "known_advisories": 0,
+    "pins": "package-lock.json"
+  },
+  "bundle": {
+    "checked_at_utc": "2026-11-01T01:23:01.021Z",
+    "version": "0.1.0",
+    "bundle": "flamingo-file-tools.mcpb",
+    "bytes": 5105234,
+    "sha256": "cacee9c0d6776cbccfc3b3f89223188fa1ea7741f21ea37bceb3f1f56b6490ca",
+    "source_byte_parity": true,
+    "production_dependencies_self_contained": true,
+    "sdk_license_present": true,
+    "build_cli_not_in_runtime_bundle": true,
+    "actual_unpacked_stdio_handshake": true,
+    "tools": [
+      "capabilities",
+      "access_extract",
+      "creativepack_optimize",
+      "patterncopy_inspect",
+      "patterncopy_stamp",
+      "shelfrelay_preview"
+    ],
+    "capability_products": 4,
+    "processing_tools_invoked": 0,
+    "real_key_used": false,
+    "native_mcpb_client_installation_tested": false
+  },
+  "registry_metadata_validates_against": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "new_processing_gateway_calls": 0,
+  "native_mcpb_client_installation_tested": false,
+  "hostile_local_writer_sandbox_claim": false,
+  "files": {
+    "server/core.mjs": "dcfc7245fbcb1c8eba604ad6fb2face87da3bafeb3118b6b5e8ea5a97f40dd7a",
+    "server/index.mjs": "705a01e57c5d6bda79acf2b563cc244abb31b5eda69bd190392b868e3d77ea80",
+    "manifest.json": "1773c3a03bf4aa708e0de61e8368933bf7993e29f3ff68ba199d0a6a83e7c13f",
+    "package-lock.json": "db664836bed967a414de3e00c9331de4b596716478bf48f1c388afc0398f84b3"
+  }
+}

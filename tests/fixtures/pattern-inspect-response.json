@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "operation": "inspect",
+  "document": {
+    "pages": 3,
+    "input_bytes": 5996,
+    "layers": 4,
+    "has_layers": true,
+    "has_forms": false,
+    "form_widgets": 0,
+    "annotations": 1,
+    "has_outlines": true,
+    "encrypted": false,
+    "engine_version": "1.0.0"
+  }
+}

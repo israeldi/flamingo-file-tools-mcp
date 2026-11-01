@@ -1,0 +1,30 @@
+[
+  {
+    "file": "sample-access.accdb",
+    "bytes": 360448,
+    "sha256": "c90a11f3f3a7763b44bb75a00ec9527d41e6937a3678ae7c600f4100ffa541a6",
+    "source": "https://raw.githubusercontent.com/israeldi/flamingo-api-examples/117f529087673c3c1ee2e18771cdc7dd15d58283/sample-access.accdb",
+    "provenance": "Owned synthetic sample; not customer data"
+  },
+  {
+    "file": "sample-creative.zip",
+    "bytes": 809389,
+    "sha256": "2fa23f52cd2fc2bf44dd7b6b3731b13818846c43e285e35ada1659c316822bcc",
+    "source": "https://raw.githubusercontent.com/israeldi/flamingo-api-examples/117f529087673c3c1ee2e18771cdc7dd15d58283/sample-creative.zip",
+    "provenance": "Owned synthetic sample; not customer data"
+  },
+  {
+    "file": "sample-pattern.pdf",
+    "bytes": 5996,
+    "sha256": "834c183fdcff897f22e85cd7212a0d2e5231cb7b03a49d1cf5c66768f9cec3b9",
+    "source": "https://raw.githubusercontent.com/israeldi/flamingo-api-examples/117f529087673c3c1ee2e18771cdc7dd15d58283/sample-pattern.pdf",
+    "provenance": "Owned synthetic sample; not customer data"
+  },
+  {
+    "file": "sample-onix-request.json",
+    "bytes": 2301,
+    "sha256": "48f10aac6fccf43fa3dfc65794b00ee277fa9e81c3d5bfcd5aa45c0be4c0020e",
+    "source": "https://raw.githubusercontent.com/israeldi/flamingo-api-examples/0b27c0a927409d7c84f56c4efc939dd880936eca/postman/shelfrelay-onix.postman_collection.json (embedded request body)",
+    "provenance": "Original fictional book request; not a live result"
+  }
+]

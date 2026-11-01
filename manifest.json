@@ -1,0 +1,54 @@
+{
+  "manifest_version": "0.3",
+  "name": "flamingo-file-tools",
+  "display_name": "Flamingo File Tools",
+  "version": "0.1.0",
+  "description": "Access exports, HTML5 ZIP optimization, layered PDF stamps and ONIX previews via RapidAPI.",
+  "long_description": "Connect an MCP assistant to four existing file-processing APIs. Select a local workspace and supply your own RapidAPI application key. Every processing operation requires explicit consent, uploads the chosen file through RapidAPI and consumes the selected API's allowance. Each API requires its own subscription. Capability discovery is local and needs no key. Originals are preserved; new artifacts stay in your workspace. ONIX results are review artifacts and do not update WooCommerce.",
+  "author": { "name": "Israel Diego", "url": "https://github.com/israeldi" },
+  "repository": { "type": "git", "url": "https://github.com/israeldi/flamingo-file-tools-mcp" },
+  "homepage": "https://github.com/israeldi/flamingo-file-tools-mcp",
+  "documentation": "https://github.com/israeldi/flamingo-file-tools-mcp#readme",
+  "support": "https://github.com/israeldi/flamingo-file-tools-mcp/issues",
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.mjs",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server/index.mjs"],
+      "env": {
+        "RAPIDAPI_KEY": "${user_config.rapidapi_key}",
+        "FLAMINGO_WORKSPACE_DIR": "${user_config.workspace}"
+      }
+    }
+  },
+  "tools": [
+    { "name": "capabilities", "description": "Local supported tasks, subscriptions and limits; no upload." },
+    { "name": "access_extract", "description": "Export supported MDB/ACCDB scalar tables to JSON or a CSV ZIP." },
+    { "name": "creativepack_optimize", "description": "Optimize PNG/JPEG assets in an HTML5 ad ZIP and review the byte-budget report." },
+    { "name": "patterncopy_inspect", "description": "Inspect whether a PDF is supported by PatternCopy." },
+    { "name": "patterncopy_stamp", "description": "Add visible text to a supported PDF while preserving its supported size layers." },
+    { "name": "shelfrelay_preview", "description": "Interpret a supported ONIX request into local review artifacts; no store writes." }
+  ],
+  "keywords": ["access", "accdb", "mdb", "html5", "advertising", "pdf", "onix", "woocommerce", "rapidapi"],
+  "license": "MIT",
+  "privacy_policies": [
+    "https://github.com/israeldi/flamingo-file-tools-mcp/blob/main/PRIVACY.md",
+    "https://rapidapi.com/page/privacy",
+    "https://rapidapi.com/IsraelDiego/api/access-file-extractor",
+    "https://rapidapi.com/IsraelDiego/api/creativepack",
+    "https://flamingoapis.synology.me:8443/privacy",
+    "https://shelfrelay.flamingoapis.synology.me:8443/privacy"
+  ],
+  "compatibility": { "platforms": ["darwin", "win32", "linux"], "runtimes": { "node": ">=20.0.0" } },
+  "user_config": {
+    "workspace": {
+      "type": "directory", "title": "Workspace folder", "required": true,
+      "description": "Choose a private folder containing only files you want this integration to access. Results are saved here."
+    },
+    "rapidapi_key": {
+      "type": "string", "title": "RapidAPI application key", "sensitive": true, "required": false,
+      "description": "Enter locally to process files. Leave empty to inspect capabilities. Never share or put the key in chat."
+    }
+  }
+}

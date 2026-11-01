@@ -1,0 +1,87 @@
+{
+  "profile": "shelfrelay-onix3-physical-v1",
+  "results": [
+    {
+      "index": 0,
+      "status": "ok",
+      "operation": "upsert",
+      "identity": {
+        "isbn13": "9781234567897",
+        "sku": "9781234567897",
+        "record_reference": "shelfrelay-demo-001"
+      },
+      "next_xml": "<ONIXMessage release=\"3.1\" xmlns=\"http://ns.editeur.org/onix/3.1/reference\"><Header><DefaultCurrencyCode>USD</DefaultCurrencyCode><DefaultPriceType>01</DefaultPriceType></Header><Product><RecordReference>shelfrelay-demo-001</RecordReference><NotificationType>03</NotificationType><ProductIdentifier><ProductIDType>15</ProductIDType><IDValue>9781234567897</IDValue></ProductIdentifier><DescriptiveDetail><ProductComposition>00</ProductComposition><ProductForm>BC</ProductForm><TitleDetail><TitleType>01</TitleType><TitleElement><TitleElementLevel>01</TitleElementLevel><TitleText>The Orchard Notebook (sample)</TitleText></TitleElement></TitleDetail><Contributor><SequenceNumber>1</SequenceNumber><ContributorRole>A01</ContributorRole><PersonName>Alex Example</PersonName></Contributor><Language><LanguageRole>01</LanguageRole><LanguageCode>eng</LanguageCode></Language></DescriptiveDetail><CollateralDetail><TextContent><TextType>03</TextType><ContentAudience>00</ContentAudience><Text>A fictional demonstration book. Replace this record with your authorized catalogue.</Text></TextContent><SupportingResource><ResourceContentType>01</ResourceContentType><ContentAudience>00</ContentAudience><ResourceMode>03</ResourceMode><ResourceVersion><ResourceForm>02</ResourceForm><ResourceLink>https://shelfrelay.flamingoapis.synology.me:8443/sample-cover.png</ResourceLink></ResourceVersion></SupportingResource></CollateralDetail><PublishingDetail><Publisher><PublishingRole>01</PublishingRole><PublisherName>Example Press</PublisherName></Publisher><PublishingStatus>04</PublishingStatus></PublishingDetail><ProductSupply><Market><Territory><CountriesIncluded>US</CountriesIncluded></Territory></Market><SupplyDetail><Supplier><SupplierRole>01</SupplierRole><SupplierName>Example Distribution</SupplierName></Supplier><ProductAvailability>20</ProductAvailability><Price><PriceType>01</PriceType><PriceAmount>18.50</PriceAmount><CurrencyCode>USD</CurrencyCode></Price></SupplyDetail></ProductSupply></Product></ONIXMessage>",
+      "source_hash": "cd4f27062a7700a76511993f69f9cfc5f51dce465ddea77d7830c44b2be6dda6",
+      "projection": {
+        "fields": {
+          "title": "The Orchard Notebook (sample)",
+          "description": "A fictional demonstration book. Replace this record with your authorized catalogue.",
+          "regular_price": "18.50",
+          "stock_status": "instock",
+          "contributors": [
+            {
+              "name": "Alex Example",
+              "role": "A01"
+            }
+          ],
+          "publisher": "Example Press",
+          "publication_date": null,
+          "languages": [
+            "eng"
+          ],
+          "subjects": null,
+          "cover_url": "https://shelfrelay.flamingoapis.synology.me:8443/sample-cover.png",
+          "product_form": "BC",
+          "availability_code": "20",
+          "publishing_status": "04",
+          "price_includes_tax": false
+        },
+        "field_states": {
+          "title": "value",
+          "description": "value",
+          "regular_price": "value",
+          "stock_status": "value",
+          "contributors": "value",
+          "publisher": "value",
+          "publication_date": "absent",
+          "languages": "value",
+          "subjects": "absent",
+          "cover_url": "value",
+          "product_form": "value",
+          "availability_code": "value",
+          "publishing_status": "value",
+          "price_includes_tax": "value"
+        },
+        "apply_fields": {
+          "title": "The Orchard Notebook (sample)",
+          "description": "A fictional demonstration book. Replace this record with your authorized catalogue.",
+          "regular_price": "18.50",
+          "stock_status": "instock",
+          "contributors": [
+            {
+              "name": "Alex Example",
+              "role": "A01"
+            }
+          ],
+          "publisher": "Example Press",
+          "languages": [
+            "eng"
+          ],
+          "cover_url": "https://shelfrelay.flamingoapis.synology.me:8443/sample-cover.png",
+          "product_form": "BC",
+          "availability_code": "20",
+          "publishing_status": "04",
+          "price_includes_tax": false
+        },
+        "merchant_owned_fields": []
+      },
+      "diagnostics": []
+    }
+  ],
+  "summary": {
+    "total": 1,
+    "ok": 1,
+    "rejected": 0
+  },
+  "ok": true
+}

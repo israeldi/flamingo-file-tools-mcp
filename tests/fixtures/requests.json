@@ -1,0 +1,163 @@
+{
+  "access": {
+    "item": [
+      {
+        "request": {
+          "method": "POST",
+          "url": "https://access-file-extractor.p.rapidapi.com/v1/extract?format=json",
+          "header": [
+            {
+              "key": "X-RapidAPI-Host",
+              "value": "access-file-extractor.p.rapidapi.com",
+              "type": "text"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/octet-stream",
+              "type": "text"
+            },
+            {
+              "key": "Accept",
+              "value": "application/json",
+              "type": "text"
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "identity",
+              "type": "text"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "creative": {
+    "item": [
+      {
+        "request": {
+          "method": "POST",
+          "url": "https://creativepack.p.rapidapi.com/v1/optimize",
+          "header": [
+            {
+              "key": "X-RapidAPI-Host",
+              "value": "creativepack.p.rapidapi.com",
+              "type": "text"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8",
+              "type": "text"
+            },
+            {
+              "key": "Accept",
+              "value": "application/json",
+              "type": "text"
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "identity",
+              "type": "text"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "pattern": {
+    "item": [
+      {
+        "request": {
+          "method": "POST",
+          "url": "https://patterncopy-pdf.p.rapidapi.com/v1/inspect",
+          "header": [
+            {
+              "key": "X-RapidAPI-Host",
+              "value": "patterncopy-pdf.p.rapidapi.com",
+              "type": "text"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/pdf",
+              "type": "text"
+            },
+            {
+              "key": "Accept",
+              "value": "application/json",
+              "type": "text"
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "identity",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      {
+        "request": {
+          "method": "POST",
+          "url": "https://patterncopy-pdf.p.rapidapi.com/v1/stamp",
+          "header": [
+            {
+              "key": "X-RapidAPI-Host",
+              "value": "patterncopy-pdf.p.rapidapi.com",
+              "type": "text"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/pdf",
+              "type": "text"
+            },
+            {
+              "key": "Accept",
+              "value": "application/pdf",
+              "type": "text"
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "identity",
+              "type": "text"
+            },
+            {
+              "key": "X-PatternCopy-Options",
+              "value": "eyJ0ZXh0IjogIkxpY2Vuc2VkIHRvIEFsZXggRXhhbXBsZSAtIE9yZGVyIDEwNDIiLCAiZm9udF9zaXplIjogNiwgIm1hcmdpbiI6IDEyLCAicG9zaXRpb24iOiAiYm90dG9tLWxlZnQifQ==",
+              "type": "text"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "shelf": {
+    "item": [
+      {
+        "request": {
+          "method": "POST",
+          "url": "https://shelfrelay-onix.p.rapidapi.com/v1/normalize",
+          "header": [
+            {
+              "key": "X-RapidAPI-Host",
+              "value": "shelfrelay-onix.p.rapidapi.com",
+              "type": "text"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            },
+            {
+              "key": "Accept",
+              "value": "application/json",
+              "type": "text"
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "identity",
+              "type": "text"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "scope": "Offline transport contract fixtures; no live API call, customer transaction or new backend result is inferred.",
+  "existing_provenance": {
+    "examples_commit": "117f529087673c3c1ee2e18771cdc7dd15d58283",
+    "samples_sha256": {
+      "sample-access.accdb": "c90a11f3f3a7763b44bb75a00ec9527d41e6937a3678ae7c600f4100ffa541a6",
+      "sample-creative.zip": "2fa23f52cd2fc2bf44dd7b6b3731b13818846c43e285e35ada1659c316822bcc",
+      "sample-pattern.pdf": "834c183fdcff897f22e85cd7212a0d2e5231cb7b03a49d1cf5c66768f9cec3b9"
+    },
+    "shelfrelay_request_sha256": "685970189a31a81e225fcb0c20b0c38d147ab95bc2e8d613242875b3ba1818ca",
+    "fixtures": {
+      "access-response.json": "Constructed minimum typed-export shape, checked by the published client validator; not a captured API result.",
+      "creative-response.json": "Constructed unchanged-archive response, checked by the published client validator; exercises valid over_budget. No optimizer run inferred.",
+      "pattern-inspect-response.json": "Current OpenAPI illustrative inspection example.",
+      "pattern-response.pdf": "Owned synthetic source PDF used as arbitrary returned-byte fixture for format/digest tests. It is not a newly stamped output.",
+      "shelfrelay-response.json": "Current local released engine normalized the current original fictional request; no HTTP/gateway call."
+    }
+  },
+  "bindings": [
+    {
+      "file": "access-response.json",
+      "source": "distribution/postman/fixtures/access-response.json",
+      "source_sha256": "11606d8ba1a2800099b2c03c469865f1ebe78c26d78df319b9a12a687c0e882d",
+      "fixture_sha256": "11606d8ba1a2800099b2c03c469865f1ebe78c26d78df319b9a12a687c0e882d",
+      "scope": "Unchanged byte copy of existing qualified response fixture."
+    },
+    {
+      "file": "creative-response.json",
+      "source": "distribution/postman/fixtures/creative-response.json",
+      "source_sha256": "faaf4a2736f8a034e6ecd269b4d822f0a19a05b0332bb19a8a23d3af1fab14cb",
+      "fixture_sha256": "1d176893fc48931f977d3581f99167f8a7157c4dfec11dcedafcca3c52f2c2ea",
+      "scope": "Constructed unchanged-archive response, not optimizer output. Added per-file saved_bytes=0 and invariant facts independently established by identical input/output bytes; preserves full original sample/archive/report values."
+    },
+    {
+      "file": "pattern-inspect-response.json",
+      "source": "distribution/postman/fixtures/pattern-inspect-response.json",
+      "source_sha256": "2b913716c28827c05a5d7ec2612a0a788e7d562b02347ff6e9a9aa36303cd4d5",
+      "fixture_sha256": "ad85980ee5fa60e7227b80caf2b07653e4e2776c0814f7cb190388311d7e3529",
+      "scope": "Constructed contract response from OpenAPI illustration; input_bytes bound to the actual owned input length. Page/layer fields remain illustrative, not measured output or a fresh inspection."
+    },
+    {
+      "file": "shelfrelay-response.json",
+      "source": "distribution/postman/fixtures/shelfrelay-response.json",
+      "source_sha256": "dd07085050e629e0882874a12213a562b3caba5f5fc5c98a590b7da7216fcedd",
+      "fixture_sha256": "dd07085050e629e0882874a12213a562b3caba5f5fc5c98a590b7da7216fcedd",
+      "scope": "Unchanged byte copy of existing qualified response fixture."
+    },
+    {
+      "source": "distribution/postman/access-file-extractor.postman_collection.json",
+      "source_sha256": "4a7cca202504593e5063a22a6ca89b9850747398b3c08374c896d262ce3ee7a8",
+      "scope": "Request metadata copied to requests.json: method, URL, headers only; embedded bodies are covered by the separately owned sample fixtures."
+    },
+    {
+      "source": "distribution/postman/creativepack.postman_collection.json",
+      "source_sha256": "40855dc0f8b5afb198ff0403a7637dafa169266448ada0b6aaaceb4f1ef968cb",
+      "scope": "Request metadata copied to requests.json: method, URL, headers only; embedded bodies are covered by the separately owned sample fixtures."
+    },
+    {
+      "source": "distribution/postman/patterncopy-pdf.postman_collection.json",
+      "source_sha256": "7829f80fb2d55250299286c08c27644bfbd218101414206bb0e420ae5b54579e",
+      "scope": "Request metadata copied to requests.json: method, URL, headers only; embedded bodies are covered by the separately owned sample fixtures."
+    },
+    {
+      "source": "distribution/postman/shelfrelay-onix.postman_collection.json",
+      "source_sha256": "a7e1c966e0927012d20bd772fb201e580ecf06fe657029017d7f11a36ab32fb3",
+      "scope": "Request metadata copied to requests.json: method, URL, headers only; embedded bodies are covered by the separately owned sample fixtures."
+    }
+  ],
+  "shelf_rejection_literal": "core.test.mjs includes exact local engine normalize_batch output for one <bad/> record and US/USD/01 policy, evaluated during authoring; no HTTP/gateway call.",
+  "original_creative_fixture_preserved": {
+    "file": "creative-response-original-postman.json",
+    "source": "distribution/postman/fixtures/creative-response.json",
+    "sha256": "faaf4a2736f8a034e6ecd269b4d822f0a19a05b0332bb19a8a23d3af1fab14cb",
+    "scope": "Exact original minimal constructed Postman response. It omits fields mandatory in the current service schema and is retained only as provenance/reference, not a positive full-contract fixture."
+  },
+  "qualification_status": "Offline bridge contract tests only; no producer behavior, current deployment identity, real marketplace result or customer adoption inferred.",
+  "creative_contract_review": {
+    "decision": "Strict selected integrity checks derived from the current published required fields: per-file saved_bytes and report.invariants remain mandatory. The bridge does not claim exhaustive JSON-Schema validation of every descriptive producer field. Original minimal Postman fixture is provenance/reference, not a positive fixture for those strengthened checks.",
+    "schema_source": "Released CreativePack source commit0f5250267073ed4a97d9a90defa70465c78a1b98, services/creativepack-api/marketplace/openapi-provider-import.json",
+    "schema_sha256": "f81fd20ea94b0dd705cfdb091c8c1cdae1ace955a4f1c270ae677534b50e8475",
+    "required_field_proof": {
+      "File": {
+        "required": [
+          "path",
+          "is_directory",
+          "kind",
+          "input_bytes",
+          "output_bytes",
+          "saved_bytes",
+          "input_sha256",
+          "output_sha256",
+          "method",
+          "warnings",
+          "image"
+        ]
+      },
+      "Report": {
+        "required": [
+          "schema_version",
+          "status",
+          "requested_mode",
+          "budget_bytes",
+          "input_bytes",
+          "output_bytes",
+          "saved_bytes",
+          "savings_percent",
+          "input_sha256",
+          "output_sha256",
+          "selection",
+          "input_expanded_bytes",
+          "output_expanded_bytes",
+          "invariants",
+          "files",
+          "warnings",
+          "limitations"
+        ]
+      }
+    },
+    "runtime_source": "services/creativepack-api/app/archive.py:296 and354-360 in the same CreativePack source worktree; integrator verified producer emits per-file saved_bytes and four true invariants.",
+    "derived_fixture_scope": "Constructed minimal response for the tested integrity fields, based on identical input/output owned archive bytes and the published required-field definitions. It is not a complete captured producer response, a new optimizer run, or evidence of live marketplace behavior.",
+    "published_schema_url": "https://creativepack.flamingoapis.synology.me:8443/openapi.json"
+  }
+}

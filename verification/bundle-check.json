@@ -1,0 +1,24 @@
+{
+  "checked_at_utc": "2026-11-01T01:23:01.021Z",
+  "version": "0.1.0",
+  "bundle": "flamingo-file-tools.mcpb",
+  "bytes": 5105234,
+  "sha256": "cacee9c0d6776cbccfc3b3f89223188fa1ea7741f21ea37bceb3f1f56b6490ca",
+  "source_byte_parity": true,
+  "production_dependencies_self_contained": true,
+  "sdk_license_present": true,
+  "build_cli_not_in_runtime_bundle": true,
+  "actual_unpacked_stdio_handshake": true,
+  "tools": [
+    "capabilities",
+    "access_extract",
+    "creativepack_optimize",
+    "patterncopy_inspect",
+    "patterncopy_stamp",
+    "shelfrelay_preview"
+  ],
+  "capability_products": 4,
+  "processing_tools_invoked": 0,
+  "real_key_used": false,
+  "native_mcpb_client_installation_tested": false
+}

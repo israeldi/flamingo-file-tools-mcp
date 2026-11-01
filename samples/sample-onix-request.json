@@ -1,0 +1,12 @@
+{
+  "records": [
+    {
+      "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ONIXMessage release=\"3.1\" xmlns=\"http://ns.editeur.org/onix/3.1/reference\">\n  <Header><DefaultCurrencyCode>USD</DefaultCurrencyCode><DefaultPriceType>01</DefaultPriceType></Header>\n  <Product>\n    <RecordReference>shelfrelay-demo-001</RecordReference><NotificationType>03</NotificationType>\n    <ProductIdentifier><ProductIDType>15</ProductIDType><IDValue>9781234567897</IDValue></ProductIdentifier>\n    <DescriptiveDetail><ProductComposition>00</ProductComposition><ProductForm>BC</ProductForm>\n      <TitleDetail><TitleType>01</TitleType><TitleElement><TitleElementLevel>01</TitleElementLevel><TitleText>The Orchard Notebook (sample)</TitleText></TitleElement></TitleDetail>\n      <Contributor><SequenceNumber>1</SequenceNumber><ContributorRole>A01</ContributorRole><PersonName>Alex Example</PersonName></Contributor>\n      <Language><LanguageRole>01</LanguageRole><LanguageCode>eng</LanguageCode></Language>\n    </DescriptiveDetail>\n    <CollateralDetail><TextContent><TextType>03</TextType><ContentAudience>00</ContentAudience><Text>A fictional demonstration book. Replace this record with your authorized catalogue.</Text></TextContent>\n      <SupportingResource><ResourceContentType>01</ResourceContentType><ContentAudience>00</ContentAudience><ResourceMode>03</ResourceMode><ResourceVersion><ResourceForm>02</ResourceForm><ResourceLink>https://shelfrelay.flamingoapis.synology.me:8443/sample-cover.png</ResourceLink></ResourceVersion></SupportingResource>\n    </CollateralDetail>\n    <PublishingDetail><Publisher><PublishingRole>01</PublishingRole><PublisherName>Example Press</PublisherName></Publisher><PublishingStatus>04</PublishingStatus></PublishingDetail>\n    <ProductSupply><Market><Territory><CountriesIncluded>US</CountriesIncluded></Territory></Market><SupplyDetail><Supplier><SupplierRole>01</SupplierRole><SupplierName>Example Distribution</SupplierName></Supplier><ProductAvailability>20</ProductAvailability><Price><PriceType>01</PriceType><PriceAmount>18.50</PriceAmount><CurrencyCode>USD</CurrencyCode></Price></SupplyDetail></ProductSupply>\n  </Product>\n</ONIXMessage>"
+    }
+  ],
+  "policy": {
+    "market_country": "US",
+    "currency": "USD",
+    "price_type": "01"
+  }
+}

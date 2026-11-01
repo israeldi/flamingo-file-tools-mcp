@@ -1,0 +1,39 @@
+{
+  "manifest": {
+    "schema_version": "1.0",
+    "complete": true,
+    "format": "json",
+    "total_rows": 2,
+    "tables": [
+      {
+        "id": "t1",
+        "name": "ExampleTable",
+        "rows": 2,
+        "columns": [
+          {
+            "name": "ExampleID"
+          },
+          {
+            "name": "Label"
+          }
+        ]
+      }
+    ]
+  },
+  "tables": [
+    {
+      "id": "t1",
+      "name": "ExampleTable",
+      "rows": [
+        [
+          1,
+          "First synthetic row"
+        ],
+        [
+          2,
+          "Second synthetic row"
+        ]
+      ]
+    }
+  ]
+}

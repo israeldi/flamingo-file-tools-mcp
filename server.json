@@ -1,0 +1,21 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.israeldi/flamingo-file-tools",
+  "title": "Flamingo File Tools",
+  "description": "Access tables, HTML5 ad ZIPs, layered PDF stamps and ONIX previews via RapidAPI.",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/israeldi/flamingo-file-tools-mcp",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "mcpb",
+      "identifier": "https://github.com/israeldi/flamingo-file-tools-mcp/releases/download/v0.1.0/flamingo-file-tools.mcpb",
+      "fileSha256": "cacee9c0d6776cbccfc3b3f89223188fa1ea7741f21ea37bceb3f1f56b6490ca",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}
