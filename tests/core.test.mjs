@@ -106,8 +106,12 @@ async function assertArtifacts(result, directory, expected) {
     const bytes = await fs.readFile(artifact.path);
     assert.equal(artifact.bytes, bytes.length);
     assert.equal(artifact.sha256, digest(bytes));
-    assert.equal((await fs.stat(artifact.path)).mode & 0o777, 0o600);
-    assert.equal((await fs.stat(path.dirname(artifact.path))).mode & 0o777, 0o700);
+    // POSIX permission bits do not establish Windows ACL privacy. Windows users
+    // configure their own private workspace ACLs; this suite does not verify them.
+    if (process.platform !== 'win32' && typeof process.getuid === 'function') {
+      assert.equal((await fs.stat(artifact.path)).mode & 0o777, 0o600);
+      assert.equal((await fs.stat(path.dirname(artifact.path))).mode & 0o777, 0o700);
+    }
     assert.equal(bytes.includes(Buffer.from(KEY)), false, 'credential is never saved as an artifact');
   }
 }
