@@ -1,0 +1,46 @@
+name: Publish verified release to MCP Registry
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publish:
+    if: github.repository == 'israeldi/flamingo-file-tools-mcp' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      MCP_PUBLISHER_VERSION: v1.8.1
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-fund --no-audit
+      - run: npm audit --omit=dev --audit-level=moderate
+      - run: npm test
+      - name: Verify published bundle matches immutable metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          url=$(node -p 'JSON.parse(require("fs").readFileSync("server.json")).packages[0].identifier')
+          expected=$(node -p 'JSON.parse(require("fs").readFileSync("server.json")).packages[0].fileSha256')
+          curl --fail --location --silent --show-error --output release.mcpb "$url"
+          echo "$expected  release.mcpb" | sha256sum --check
+      - uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
+      - name: Download and verify official publisher
+        shell: bash
+        run: |
+          set -euo pipefail
+          archive=mcp-publisher_linux_amd64.tar.gz
+          base_url="https://github.com/modelcontextprotocol/registry/releases/download/${MCP_PUBLISHER_VERSION}"
+          curl --fail --location --silent --show-error --output "$archive" "$base_url/$archive"
+          curl --fail --location --silent --show-error --output "$archive.sigstore.json" "$base_url/$archive.sigstore.json"
+          cosign verify-blob --bundle "$archive.sigstore.json" --certificate-identity "https://github.com/modelcontextprotocol/registry/.github/workflows/release.yml@refs/tags/${MCP_PUBLISHER_VERSION}" --certificate-oidc-issuer "https://token.actions.githubusercontent.com" "$archive"
+          tar xzf "$archive" mcp-publisher
+      - name: Authenticate using this repository's GitHub identity
+        run: ./mcp-publisher login github-oidc
+      - name: Publish reviewed public metadata
+        run: ./mcp-publisher publish
