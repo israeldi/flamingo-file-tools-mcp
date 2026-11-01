@@ -1,10 +1,18 @@
 # Export Access tables
 
-Use `access_extract` for a local MDB/ACCDB snapshot containing supported scalar tables. It does not migrate forms, reports, macros/VBA, saved-query execution, linked data or an Access application. Input is bounded to 40 MiB; the serialized response is bounded to 32 MiB. The bridge's manifest checks allow up to 100 tables and 250,000 total rows; reaching any boundary is a limit, not permission to truncate.
+Use the supplied `scripts/access_client.py` for a local MDB/ACCDB snapshot containing supported scalar tables. An existing MCP connection can use `access_extract` instead. This does not migrate forms, reports, macros/VBA, saved-query execution, linked data or an Access application. Input is bounded to 40 MiB; the serialized response is bounded to 32 MiB. Manifest checks allow up to 100 tables and 250,000 total rows; reaching any boundary is a limit, not permission to truncate.
 
 Choose `json` for typed table data and schema metadata. Choose `csv` when the downstream tool needs a ZIP containing a manifest and per-table CSVs; retain the manifest because CSV alone does not express the full type information. Do not silently coerce absent values, numbers or dates to fit an expected result.
 
-Request shape, assuming this exact upload is already authorized:
+The agent fetches the client unchanged through Agensi, runs it temporarily, and removes the script after use. For an already authorized example:
+
+```text
+python3 <temporary-access-client.py> --workspace <private-workspace> --file sample-access.accdb --format json --consent-upload
+```
+
+Use `--format csv` instead for the ZIP alternative. Do not run both formats unless the task requests both. These placeholders denote paths selected by the agent, not a command the user needs to construct.
+
+For an already connected MCP bridge, the equivalent request is:
 
 ```json
 {"tool":"access_extract","arguments":{"file":"sample-access.accdb","format":"json","consent":true}}
@@ -20,7 +28,7 @@ These are separate alternatives, not a direction to make two calls. `format` def
 
 ## Result review
 
-The bridge saves `extracted.json` or `extracted-csv.zip` in a new result directory. Its summary contains `format`, `table_count` and `total_rows`. It checks that the manifest is complete, uses schema version `1.0`, matches the requested format and agrees with the returned table identities and row counts. JSON row widths must match the column metadata. CSV responses must have only the declared `manifest.json` and `tables/<number>.csv` members, matching headers and counts.
+The client saves `extracted.json` or `extracted-csv.zip` in a new result directory. Its summary contains `format`, `table_count` and `total_rows`. It checks that the manifest is complete, uses schema version `1.0`, matches the requested format and agrees with the returned table identities and row counts. JSON row widths must match the column metadata. CSV responses must have only the declared `manifest.json` and `tables/<number>.csv` members, matching headers and counts.
 
 Those checks establish response consistency, not independent equality with every original database value. When the user's task depends on exact business totals or semantics, compare the relevant source totals/schema with the extracted data through an appropriate authorized source reader before claiming fidelity. Do not label a rejected or incomplete export as a smaller successful migration.
 

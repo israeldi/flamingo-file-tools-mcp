@@ -13,9 +13,9 @@ Version `0.1.0` is listed in the [Official MCP Registry](https://registry.modelc
 
 The bridge is free source code. **Processing requires your own RapidAPI application key and a separate subscription to each API you use.** Review the current free compatibility allowance, paid plans and limits on its listing. Requests, failures and deliberate retries can consume allowance. There are no automatic processing calls on startup or tool discovery, and no automatic retries.
 
-For assistants that support `SKILL.md` workflows, the optional [Flamingo File Tools skill](./skills/flamingo-file-tools/SKILL.md) provides task routing, file-specific checks and result handling for this server.
+The optional [Flamingo File Tools skill](./skills/flamingo-file-tools/SKILL.md) helps an agent select one file task, run it deliberately, and return reviewable artifacts. Skill source version `0.2.0` includes independent Python standard-library clients for macOS/Linux, so that route needs no separate MCP bridge or pip installation. A compatible agent runs the selected script unchanged temporarily. Python 3.10+, a working HTTPS trust store, a private workspace, your private `RAPIDAPI_KEY` and a separate subscription to the selected API remain necessary. The existing MCP server is still an alternative for clients already configured to use it.
 
-The same instructions are available as a [free skill on Agensi](https://www.agensi.io/skills/flamingo-file-tools-access-pdf-zip-onix). Agensi loads the guide into a connected agent; this local MCP server and separate RapidAPI subscriptions are still required. Loading the instructions does not install the server or make a processing request.
+The [free Agensi listing](https://www.agensi.io/skills/flamingo-file-tools-access-pdf-zip-onix) now serves approved package `v1.1`, containing skill source `0.2.0` and the four temporary clients. Agensi loads the selected client into a compatible agent; it does not host the processing service. Loading instructions alone makes no upload or processing request. API access and usage are separate from the free skill.
 
 ## Install
 
