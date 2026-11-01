@@ -2,6 +2,8 @@
 
 Use four focused file-processing APIs from an MCP assistant. The local bridge reads a file you select, sends one deliberate request through RapidAPI, and saves new results in your selected folder.
 
+Version `0.1.0` is listed in the [Official MCP Registry](https://registry.modelcontextprotocol.io/?q=flamingo-file-tools) under `io.github.israeldi/flamingo-file-tools`.
+
 | Task | API and subscription |
 | --- | --- |
 | Export supported MDB/ACCDB scalar tables to typed JSON or CSV ZIP | [Access File Extractor](https://rapidapi.com/IsraelDiego/api/access-file-extractor) |
